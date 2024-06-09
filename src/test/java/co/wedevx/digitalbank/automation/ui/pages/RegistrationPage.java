@@ -118,22 +118,18 @@ public class RegistrationPage extends BasePage {
         }
 
         if(firstRow.get("ssn") != null) {
-            if(firstRow.get("ssn").equalsIgnoreCase("random")) {
-                ssnTextBox.sendKeys(mockData.generateRandomSSN());
-            }
+            ssnTextBox.sendKeys(firstRow.get("ssn"));
         }
 
-
-        if(firstRow.get("emailAddress") != null) {
-            if(firstRow.get("email").equalsIgnoreCase("random")) {
-                Map<String,String> mockNameAndEmail = mockData.generateRandomNameAndEmail();
-                emailAddressTextBox.sendKeys(mockNameAndEmail.get("email:"));
-            }
+        if(firstRow.get("email") != null) {
+           emailAddressTextBox.sendKeys(firstRow.get("email"));
         }
-
 
         if(firstRow.get("password") != null) {
             passwordTextBox.sendKeys(firstRow.get("password"));
+        }
+
+        if(firstRow.get("confirmPassword") != null) {
             confirmPasswordTextBox.sendKeys(firstRow.get("confirmPassword"));
         }
 
