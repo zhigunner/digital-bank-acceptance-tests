@@ -10,6 +10,6 @@ import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
 @SelectClasspathResource("ui/features")
 @ConfigurationParameter(key=GLUE_PROPERTY_NAME, value = "co.wedevx.digitalbank.automation.ui.steps")
 @IncludeTags("Test")
-public class UiRegressionRunner {
+public class UIRegressionRunner {
 
 }
