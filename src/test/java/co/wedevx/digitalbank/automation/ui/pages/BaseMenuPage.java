@@ -1,6 +1,7 @@
 package co.wedevx.digitalbank.automation.ui.pages;
 
 import co.wedevx.digitalbank.automation.ui.utils.ConfigReader;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -60,8 +61,13 @@ public class BaseMenuPage extends BasePage {
     @FindBy(id="message")
     protected WebElement messagesButton;
 
+    @FindBy(xpath="//div[@class='dropdown-menu show']/p[@style='width: max-content']")
+    protected WebElement messageReport;
+
     @FindBy(id="aboutLink")
     protected WebElement aboutLink;
+    @FindBy(xpath="//div[@class='modal-body']/p")
+    protected WebElement modalBodyParagraph;
 
     @FindBy(id="language-select")
     protected WebElement languageSelectButton;
@@ -91,4 +97,17 @@ public class BaseMenuPage extends BasePage {
             assertEquals(ConfigReader.getPropertiesValue("digitalbank.logouturl"), getDriver().getCurrentUrl(), "Logout button didn't take to the url" + ConfigReader.getPropertiesValue("digitalbank.logouturl"));
         }
     }
+
+    public void messagesTab() {
+        messagesButton.click();
+    }
+
+    public String getReportAboutUnreadMessages() {
+        return messageReport.getText();
+    }
+
+    public void aboutTab() {
+        aboutLink.click();
+    }
+
 }

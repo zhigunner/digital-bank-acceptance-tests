@@ -8,12 +8,12 @@ Feature: Digital Bank Registration Page
   @Test
   Scenario: Positive Case. As a user, I want to successfully create Digital Bank account
     When User creates account with following fields
-      | title | firstName | lastName | gender | dateOfBirth | ssn         | email             | password  | confirmPassword | address       | locality | region | postalCode | country | homePhone     | mobilePhone   | workPhone     | termsCheckMark |
-      | Mr.   | Dwight    | Schrute  | M      | 01/20/1966  | 123-44-2235 | dwight@office.com | Dwight66! | Dwight66!       | 234 W Ohio St | Scranton | PA     | 18509      | USA     | (645)747-4576 | (736)746-9124 | (943)645-9283 | true           |
+      | title | firstName | lastName | gender | dateOfBirth | ssn         | email              | password  | confirmPassword | address                 | locality | region | postalCode | country | homePhone    | mobilePhone  | workPhone    | termsCheckMark |
+      | Mr.   | Dwight    | Schrute  | M      | 01/20/1966  | 123-44-2235 | dwight@schrute.com | Dwight66! | Dwight66!       | 1725 Schrute Farms Road | Scranton | PA     | 18509      | US      | 645-747-4576 | 736-746-9124 | 943-645-9283 | true           |
     Then User should be displayed with the message "Success Registration Successful. Please Login"
     Then The following user info should be saved in the db
-      | title | firstName | lastName | gender | dateOfBirth | ssn         | email             | password  | confirmPassword | address       | locality | region | postalCode | country | homePhone     | mobilePhone   | workPhone     | accountNonExpired | accountNonLocked | credentialsNonExpired | enabled |
-      | Mr.   | Dwight    | Schrute  | M      | 01/20/1966  | 123-44-2235 | dwight@office.com | Dwight66! | Dwight66!       | 234 W Ohio St | Scranton | PA     | 18509      | USA     | (645)747-4576 | (736)746-9124 | (943)645-9283 | true              | true             | true                  | true    |
+      | title | firstName | lastName | gender | dateOfBirth | ssn         | email              | password  | confirmPassword | address                 | locality | region | postalCode | country | homePhone    | mobilePhone  | workPhone    | accountNonExpired | accountNonLocked | credentialsNonExpired | enabled |
+      | Mr.   | Dwight    | Schrute  | M      | 01/20/1966  | 123-44-2235 | dwight@schrute.com | Dwight66! | Dwight66!       | 1725 Schrute Farms Road | Scranton | PA     | 18509      | US      | 645-747-4576 | 736-746-9124 | 943-645-9283 | true              | true             | true                  | true    |
 
   @NegativeRegistrationCases
   Scenario Outline: Negative Test Cases. As a Digital Bank Administrator I want to make sure users can not register without providing all valid data
