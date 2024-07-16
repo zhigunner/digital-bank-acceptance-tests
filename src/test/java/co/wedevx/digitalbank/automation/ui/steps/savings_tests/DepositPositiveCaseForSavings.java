@@ -19,7 +19,7 @@ public class DepositPositiveCaseForSavings {
     public void the_user_makes_sure_that_the_operation_is_indicated_in_the_transaction_history_on_the_view_savings_accounts_page(List<BankTransaction> expectedTransactions) {
         Map<String,String> actualResultMap = viewSavingsAccountPage.newlyDepositedAccountTransactionInfoMap();
 
-        BankTransaction expectedTransaction = expectedTransactions.getFirst();
+        BankTransaction expectedTransaction = expectedTransactions.get(0);
         assertEquals(expectedTransaction.getCategory(), actualResultMap.get("actualCategory"), "transaction category mismatch");
         assertEquals(expectedTransaction.getAmount(), Double.parseDouble(actualResultMap.get("actualAmount")), "transaction amount mismatch");
         assertEquals(expectedTransaction.getBalance(), Double.parseDouble(actualResultMap.get("actualBalance")), "transaction balance mismatch");

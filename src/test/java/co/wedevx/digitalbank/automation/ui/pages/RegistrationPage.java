@@ -89,7 +89,7 @@ public class RegistrationPage extends BasePage {
 
     public void fillOutRegistrationForm(List<Map<String,String>> registrationPageTestDataListOfMap) {
         Select titleSelect = new Select(titleDropDown);
-        Map<String,String> firstRow = registrationPageTestDataListOfMap.getFirst();
+        Map<String,String> firstRow = registrationPageTestDataListOfMap.get(0);
 
         if(firstRow.get("title") != null) {
             titleSelect.selectByVisibleText(firstRow.get("title"));

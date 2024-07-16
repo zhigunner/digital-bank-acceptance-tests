@@ -57,7 +57,7 @@ public class ViewCheckingAccountPage extends BaseMenuPage {
 
     public Map<String, String> newlyAddedCheckingAccountMap() {
 
-        WebElement lastAccountCard = allFirstRowDivs.getLast();
+        WebElement lastAccountCard = allFirstRowDivs.get(0);
         String actualResult = lastAccountCard.getText();
 
         Map<String, String> actualResultMap = new HashMap<>();

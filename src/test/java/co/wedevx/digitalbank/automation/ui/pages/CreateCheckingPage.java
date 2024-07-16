@@ -40,7 +40,7 @@ public class CreateCheckingPage extends BaseMenuPage {
     WebElement submitButton;
 
     public void createNewChecking (List<CheckingAccountInfo> checkingAccountInfoList) {
-        CheckingAccountInfo testDataCheckingAccount = checkingAccountInfoList.getFirst();
+        CheckingAccountInfo testDataCheckingAccount = checkingAccountInfoList.get(0);
 
         checkingMenu.click();
 

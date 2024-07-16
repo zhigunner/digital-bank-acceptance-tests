@@ -50,7 +50,7 @@ public class RegistrationSteps {
 
     @Then("The following user info should be saved in the db")
     public void the_following_user_info_should_be_saved_in_the_db(List<Map<String, String>> expectedUserProfileInfoINDBList) {
-        Map<String, String> expectedUserInfoMap = expectedUserProfileInfoINDBList.getFirst();
+        Map<String, String> expectedUserInfoMap = expectedUserProfileInfoINDBList.get(0);
         String queryUserTable = String.format("SELECT * FROM users WHERE username='%s'", expectedUserInfoMap.get("email"));
         String queryUserProfile = String.format("SELECT * FROM user_profile WHERE email_address='%s'", expectedUserInfoMap.get("email"));
 
@@ -60,8 +60,8 @@ public class RegistrationSteps {
         assertEquals(1, actualUserInfoList.size(), "registration generated unexpected number of users");
         assertEquals(1, actualUserProfileInfoList.size(), "registration generated unexpected number of user profiles");
 
-        Map<String, Object> actualUserInfoMap = actualUserInfoList.getFirst();
-        Map<String, Object> actualUserProfileInfoMap = actualUserProfileInfoList.getFirst();
+        Map<String, Object> actualUserInfoMap = actualUserInfoList.get(0);
+        Map<String, Object> actualUserProfileInfoMap = actualUserProfileInfoList.get(0);
 
         assertEquals(expectedUserInfoMap.get("title"), actualUserProfileInfoMap.get("title"), "registration generated wrong title");
         assertEquals(expectedUserInfoMap.get("firstName"), actualUserProfileInfoMap.get("first_name"), "registration generated wrong first name");
@@ -86,9 +86,9 @@ public class RegistrationSteps {
         assertEquals(expectedUserInfoMap.get("enabled"), String.valueOf(actualUserInfoMap.get("enabled")), "account enabled mismatch upon registration");
         assertEquals(expectedUserInfoMap.get("email"), actualUserInfoMap.get("username"), "account username mismatch upon registration");
 
-        assertEquals((nextValueList.getFirst().get("next_val")), actualUserInfoMap.get("id"), "ID mismatch");
+        assertEquals((nextValueList.get(0).get("next_val")), actualUserInfoMap.get("id"), "ID mismatch");
 
-        long expectedUserProfileId = Integer.parseInt(String.valueOf(nextValueList.getFirst().get("next_val")));
+        long expectedUserProfileId = Integer.parseInt(String.valueOf(nextValueList.get(0).get("next_val")));
         assertEquals(++expectedUserProfileId, actualUserProfileInfoMap.get("id"), "ID mismatch");
 
 

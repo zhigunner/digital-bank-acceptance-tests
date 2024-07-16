@@ -10,20 +10,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-import java.util.List;
-import java.util.Set;
-
 public class BrowserHelper {
     //wait until the element is visible
     public static WebElement waitForVisibilityOfElement(WebDriver driver, WebElement element, int timeToWaitInSec) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeToWaitInSec));
+        WebDriverWait wait = new WebDriverWait(driver, timeToWaitInSec);
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     //wait until the element is clickable and click on it
     public static WebElement waitUntilElementClickableAndClickOnIt(WebDriver driver, WebElement element, int timeToWaitInSec){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeToWaitInSec));
+        WebDriverWait wait = new WebDriverWait(driver, timeToWaitInSec);
         WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
         clickableElement.click();
 

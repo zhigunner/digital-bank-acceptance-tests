@@ -31,7 +31,7 @@ public class ViewSavingsAccountPage extends BaseMenuPage {
 
     public Map<String, String> newlyAddedSavingsAccountMap() {
 
-        WebElement lastAccountCard = allFirstRowDivs.getLast();
+        WebElement lastAccountCard = allFirstRowDivs.get(allFirstRowDivs.size() - 1);
         String actualResult = lastAccountCard.getText();
 
         Map<String, String> actualResultMap = new HashMap<>();

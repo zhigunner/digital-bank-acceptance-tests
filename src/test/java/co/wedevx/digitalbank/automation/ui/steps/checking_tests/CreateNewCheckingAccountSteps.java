@@ -44,7 +44,7 @@ public class CreateNewCheckingAccountSteps {
     @Then("the user should see newly added account card")
     public void the_user_should_see_newly_added_account_card(List<AccountCard> accountCardList) {
         Map<String,String> actualResultMap = viewCheckingAccountPage.newlyAddedCheckingAccountMap();
-        AccountCard expectedResult = accountCardList.getFirst();
+        AccountCard expectedResult = accountCardList.get(0);
 
         assertEquals(expectedResult.getAccountName(), actualResultMap.get("actualAccountName"));
         assertEquals("Account: " + expectedResult.getAccountType(), actualResultMap.get("actualAccountType"));
@@ -63,7 +63,7 @@ public class CreateNewCheckingAccountSteps {
         Map<String,String> actualResultMap = viewCheckingAccountPage.newlyAddedCheckingAccountTransactionInfoMap();
 
 
-        BankTransaction expectedTransaction = expectedTransactions.getFirst();
+        BankTransaction expectedTransaction = expectedTransactions.get(0);
         assertEquals(expectedTransaction.getCategory(), actualResultMap.get("actualCategory"), "transaction category mismatch");
 //        assertEquals(expectedTransaction.getDescription(), actualDescription, "transaction description mismatch");
         assertEquals(expectedTransaction.getAmount(), Double.parseDouble(actualResultMap.get("actualAmount")), "transaction amount mismatch");

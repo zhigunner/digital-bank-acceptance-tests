@@ -25,7 +25,7 @@ public class BankingAppInfo {
     }
     @Then("the user sees the following {string} data")
     public void the_user_sees_the_following_data(String expectedModalBody) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement modalBodyParagraph = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='modal-body']/p")));
 
         String actualModalBody = modalBodyParagraph.getText().trim().replace("\n", "\\n").replace("\r", "");

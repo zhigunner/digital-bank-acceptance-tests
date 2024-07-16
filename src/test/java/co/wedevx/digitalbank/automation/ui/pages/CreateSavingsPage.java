@@ -41,7 +41,7 @@ public class CreateSavingsPage extends BaseMenuPage {
     private WebElement newSavingsSubmitButton;
 
     public void createNewSavings (List<SavingsAccountInfo> savingsAccountInfoList) {
-        SavingsAccountInfo testDataSavingsAccount = savingsAccountInfoList.getFirst();
+        SavingsAccountInfo testDataSavingsAccount = savingsAccountInfoList.get(0);
         savingsMenu.click();
         newSavingsButton.click();
 

@@ -19,7 +19,7 @@ public class WithdrawPositiveCaseForSavings1 {
     public void the_user_validates_the_new_amount_on_the_view_savings_page_the_fee_will_be_applied_for_the_overdraft_operation(List<BankTransaction> expectedTransactions) {
         Map<String,String> actualResultMap = viewSavingsAccountPage.newlyWithdrawedAccountTransactionInfoMap();
 
-        BankTransaction expectedTransaction = expectedTransactions.getFirst();
+        BankTransaction expectedTransaction = expectedTransactions.get(0);
         assertEquals(expectedTransaction.getCategory(), actualResultMap.get("actualCategory"), "transaction category mismatch");
         assertEquals(expectedTransaction.getAmount(), Double.parseDouble(actualResultMap.get("actualAmount")), "transaction amount mismatch");
         assertEquals(expectedTransaction.getBalance(), Double.parseDouble(actualResultMap.get("actualBalance")), "transaction balance mismatch");
