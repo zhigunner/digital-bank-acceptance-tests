@@ -2,7 +2,7 @@
 Feature: Digital Bank Registration Page
 
   Background:
-    Given The user with "dwight@office.com" is not in DB
+    Given The user with "lautaro@martinez.com" is not in DB
     And User navigates to Digital bank signup page
 
   @Test
