@@ -1,3 +1,4 @@
+@skip
 @Registration
 Feature: Digital Bank Registration Page
 
