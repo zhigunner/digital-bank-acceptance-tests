@@ -31,6 +31,38 @@ public class DataTableTransformer {
     }
 
     @DataTableType
+    public DepositBankTransaction depositTransactionEntry(Map<String,String> entry) {
+        String date = entry.get("date");
+        String category = entry.get("category");
+        String description = entry.get("description");
+        double amount = Double.parseDouble(entry.get("amount"));
+
+        return new DepositBankTransaction(date, category, description, amount);
+    }
+
+    @DataTableType
+    public WithdrawBankTransaction withdrawTransactionEntry(Map<String,String> entry) {
+        String date = entry.get("date");
+        String category = entry.get("category");
+        String description = entry.get("description");
+        double amount = Double.parseDouble(entry.get("amount"));
+
+        return new WithdrawBankTransaction(date, category, description, amount);
+    }
+
+    @DataTableType
+    public TransferBankTransaction transferTransactionEntry(Map<String,String> entry) {
+        String date = entry.get("date");
+        String category = entry.get("category");
+        String description = entry.get("description");
+        double amount = Double.parseDouble(entry.get("amount"));
+
+        return new TransferBankTransaction(date, category, description, amount);
+    }
+
+
+
+    @DataTableType
     public CheckingAccountInfo checkingAccount_infoEntry(Map<String,String> entry) {
         String accountType = entry.get("checkingAccountType");
         String ownership = entry.get("accountOwnership");

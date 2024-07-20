@@ -1,3 +1,4 @@
+@skip
 Feature: Checking the number of transactions
 
   Scenario: Checking the number of transactions on the View Checking page

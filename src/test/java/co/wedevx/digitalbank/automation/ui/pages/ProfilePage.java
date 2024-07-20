@@ -32,7 +32,10 @@ public class ProfilePage extends BaseMenuPage {
 
         assertEquals(ConfigReader.getPropertiesValue("digitalbank.usersprofileurl"), getDriver().getCurrentUrl(), "My profile button didn't take to the url" + ConfigReader.getPropertiesValue("digitalbank.usersprofileurl"));
 
+        mobilePhoneTextField.clear();
         mobilePhoneTextField.sendKeys(mobilePhone);
+
+        workPhoneTextField.clear();
         workPhoneTextField.sendKeys(workPhone);
 
         submitProfileButton.click();

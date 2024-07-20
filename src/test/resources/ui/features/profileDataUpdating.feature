@@ -1,6 +1,6 @@
 Feature: Updating profile information
 
   Scenario: Update personal information
-    Given user logged into the bank system as "coach@arsenal.com" and "Emirates2004"
-    When the user sets the  "+44 7799 888777" number as mobile number and the "+44 20 7123 4567" number as work number
+    Given user logged into the bank system as "will@turner.com" and "Turner@1977!"
+    When the user sets the  "213-555-0202" number as mobile number and the "213-555-0303" number as work number
     Then user should see the "Profile Updated Successfully." message

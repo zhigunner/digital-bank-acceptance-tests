@@ -1,18 +1,16 @@
 package co.wedevx.digitalbank.automation.ui.models;
 
-public class BankTransaction {
+public class WithdrawBankTransaction {
     private String date;
     private String category;
     private String description;
     private double amount;
-    private double balance;
 
-    public BankTransaction(String date, String category, String description, double amount, double balance ) {
+    public WithdrawBankTransaction(String date, String category, String description, double amount ) {
         this.date = date;
         this.category = category;
         this.description = description;
         this.amount = amount;
-        this.balance = balance;
     }
 
     public String getDate() {
@@ -45,13 +43,5 @@ public class BankTransaction {
 
     public void setAmount(double amount) {
         this.amount = amount;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
     }
 }

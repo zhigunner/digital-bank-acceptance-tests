@@ -29,13 +29,41 @@ public class ViewCheckingAccountPage extends BaseMenuPage {
     @FindBy(xpath = "//table[@id='transactionTable']/tbody/tr")
     private WebElement firstRowOfTransactions;
 
+    @FindBy(id = "currentBalance")
+    private WebElement currentBalanceElement;
+
     @FindBy(id="transactionTable_info")
     private WebElement tableInfoText;
 
     @FindBy(xpath="//select[@name='transactionTable_length']")
     private WebElement selectTransactionsDropdown;
 
+    public double getAccountBalance(String accountName) {
+        WebElement balanceElement = findBalanceElement(accountName);
+        return extractBalanceFromElement(balanceElement);
+    }
 
+    public WebElement findBalanceElement(String accountName) {
+        String xpathExpression = String.format("//div[contains(text(), '%s')]/ancestor::div[contains(@class, 'card-body')]/div[contains(text(), 'Balance:')]", accountName);
+        return getDriver().findElement(By.xpath(xpathExpression));
+    }
+
+    public double extractBalanceFromElement(WebElement balanceElement) {
+        String balanceText = balanceElement.getText();
+        String balanceValue = balanceText.replace("Balance: $", "").replace(",", "").trim();
+        return Double.parseDouble(balanceValue);
+    }
+
+    public Map<String, String> newlyDepositedAccountTransactionInfoMap() {
+        List<WebElement> firstRowColumns = firstRowOfTransactions.findElements(By.xpath("td"));
+
+        Map<String, String> actualResultMap = new HashMap<>();
+        actualResultMap.put("actualCategory", firstRowColumns.get(1).getText());
+        actualResultMap.put("actualAmount", firstRowColumns.get(3).getText().substring(1));
+        actualResultMap.put("actualBalance", firstRowColumns.get(4).getText().substring(1));
+
+        return actualResultMap;
+    }
 
     public Map<String, String> newlyAddedCheckingAccountTransactionInfoMap() {
         List<WebElement> firstRowColumns = firstRowOfTransactions.findElements(By.xpath("td"));
@@ -54,10 +82,9 @@ public class ViewCheckingAccountPage extends BaseMenuPage {
         return actualResultMap;
     }
 
-
     public Map<String, String> newlyAddedCheckingAccountMap() {
 
-        WebElement lastAccountCard = allFirstRowDivs.get(0);
+        WebElement lastAccountCard = allFirstRowDivs.get(allFirstRowDivs.size() - 1);
         String actualResult = lastAccountCard.getText();
 
         Map<String, String> actualResultMap = new HashMap<>();
@@ -73,22 +100,6 @@ public class ViewCheckingAccountPage extends BaseMenuPage {
 
     public String getActualCreateAccountConfirmationMessage() {
         return newAccountConfAlertDiv.getText();
-    }
-
-    public Map<String, String> newlyDepositedAccountTransactionInfoMap() {
-
-        List<WebElement> firstRowColumns = firstRowOfTransactions.findElements(By.xpath("td"));
-
-        String actualCategory = firstRowColumns.get(1).getText();
-        double actualAmount = Double.parseDouble(firstRowColumns.get(3).getText().substring(1));
-        double actualBalance = Double.parseDouble(firstRowColumns.get(4).getText().substring(1));
-
-        Map<String, String> actualResultMap = new HashMap<>();
-        actualResultMap.put("actualCategory", actualCategory);
-        actualResultMap.put("actualAmount", String.valueOf(actualAmount));
-        actualResultMap.put("actualBalance", String.valueOf(actualBalance));
-
-        return actualResultMap;
     }
 
     public void goToViewCheckingPage() {

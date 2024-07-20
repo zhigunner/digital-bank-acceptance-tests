@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static co.wedevx.digitalbank.automation.ui.utils.Driver.getDriver;
+
 public class ViewSavingsAccountPage extends BaseMenuPage {
 
     public ViewSavingsAccountPage(WebDriver driver) {
@@ -27,6 +29,22 @@ public class ViewSavingsAccountPage extends BaseMenuPage {
 
     public String getActualCreateAccountConfirmationMessage() {
         return newAccountConfAlertDiv.getText();
+    }
+
+    public double getAccountBalance(String accountName) {
+        WebElement balanceElement = findBalanceElement(accountName);
+        return extractBalanceFromElement(balanceElement);
+    }
+
+    public WebElement findBalanceElement(String accountName) {
+        String xpathExpression = String.format("//div[contains(text(), '%s')]/ancestor::div[contains(@class, 'card-body')]/div[contains(text(), 'Balance:')]", accountName);
+        return getDriver().findElement(By.xpath(xpathExpression));
+    }
+
+    public double extractBalanceFromElement(WebElement balanceElement) {
+        String balanceText = balanceElement.getText();
+        String balanceValue = balanceText.replace("Balance: $", "").replace(",", "").trim();
+        return Double.parseDouble(balanceValue);
     }
 
     public Map<String, String> newlyAddedSavingsAccountMap() {
