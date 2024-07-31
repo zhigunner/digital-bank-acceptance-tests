@@ -5,5 +5,5 @@ Feature: Withdrawal of money from existing savings account
     When the user goes to the Withdraw page
     And the user selects the "Business Savings (Savings)" account and withdraws "1000.00"
     Then the user makes sure that the savings withdraw transaction with the account "Business Savings" is indicated in the transaction history
-      | category | amount    |
-      | Misc     | -10000.00 |
+      | category | amount   |
+      | Misc     | -1000.00 |
