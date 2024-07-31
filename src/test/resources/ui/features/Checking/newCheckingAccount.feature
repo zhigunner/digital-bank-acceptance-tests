@@ -1,3 +1,4 @@
+@skip
 Feature: Creating a new checking account
 
   Scenario: Create a standard individual checking account

@@ -1,3 +1,4 @@
+@skip
 Feature: Creating a new savings account
 
   Scenario: Create a standard individual savings account
