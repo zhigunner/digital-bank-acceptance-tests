@@ -60,8 +60,6 @@ public class DataTableTransformer {
         return new TransferBankTransaction(date, category, description, amount);
     }
 
-
-
     @DataTableType
     public CheckingAccountInfo checkingAccount_infoEntry(Map<String,String> entry) {
         String accountType = entry.get("checkingAccountType");
@@ -70,6 +68,15 @@ public class DataTableTransformer {
         double balance = Double.parseDouble(entry.get("initialDepositAmount"));
 
         return new CheckingAccountInfo(accountType, ownership, accountName, balance);
+    }
+
+    @DataTableType
+    public CheckingAccountWithoutAnAccountTypeInfo checkingAccountWithoutAnAccountType_infoEntry(Map<String,String> entry) {
+        String ownership = entry.get("accountOwnership");
+        String accountName = entry.get("accountName");
+        double balance = Double.parseDouble(entry.get("initialDepositAmount"));
+
+        return new CheckingAccountWithoutAnAccountTypeInfo(ownership, accountName, balance);
     }
 
     @DataTableType
